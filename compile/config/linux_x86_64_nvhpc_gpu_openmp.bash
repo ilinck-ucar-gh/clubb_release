@@ -34,7 +34,8 @@ OPTIMIZE="-O2"
 NETCDF="$PGI_NETCDF_FORTRAN"
 
 # == Linking Flags ==
-LDFLAGS="$ARCH -L$NETCDF/lib -lnetcdff $LAPACK -mp=gpu -Mcuda"
+# LDFLAGS="$ARCH -L$NETCDF/lib -lnetcdff $LAPACK -mp=gpu -Mcuda"
+LDFLAGS="$ARCH -L$NETCDF/lib -lnetcdff $LAPACK -mp=gpu -cuda -gpu=cc80"
 
 FFLAGS="$ARCH $OPTIMIZE $DEBUG -Mbackslash -Mstandard -Kieee -mp=gpu -noacc -Minfo=accel"
 

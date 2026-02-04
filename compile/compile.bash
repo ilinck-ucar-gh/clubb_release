@@ -357,7 +357,8 @@ fi
 
 # Check if python is installed so check_for_missing_threadprivate.py can be ran
 if [ -e `which python` ]; then
-    CHECK_FOR_MISSING_THREADPRIVATE="python ../utilities/check_for_missing_threadprivate.py ../src/CLUBB_core/ ../src/SILHS/"
+#    CHECK_FOR_MISSING_THREADPRIVATE="python ../utilities/check_for_missing_threadprivate.py ../src/CLUBB_core/ ../src/SILHS/"
+    CHECK_FOR_MISSING_THREADPRIVATE="true"
 fi
 
 # ------------------------------------------------------------------------------

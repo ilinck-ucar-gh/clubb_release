@@ -31,12 +31,15 @@ OPTIMIZE="-O2"
 
 # == NetCDF Location ==
 #Variable defined in larson-group.sh, see here (https://github.com/larson-group/sys_admin/blob/master/set_larson-group_paths/larson-group.sh)
-NETCDF="$PGI_NETCDF_FORTRAN"
+# NETCDF="$PGI_NETCDF_FORTRAN"
+NETCDF="${PGI_NETCDF_FORTRAN:-$NETCDF}"
 
 # == Linking Flags ==
-LDFLAGS="$ARCH -L$NETCDF/lib -lnetcdff $LAPACK -acc -Mcuda"
+# LDFLAGS="$ARCH -L$NETCDF/lib -lnetcdff $LAPACK -acc -Mcuda"
+LDFLAGS="$ARCH -L$NETCDF/lib -lnetcdff $LAPACK -acc -cuda -gpu=cc80"
 
-FFLAGS="$ARCH $OPTIMIZE $DEBUG -Mbackslash -Mstandard -Kieee -acc -Minfo=accel"
+# FFLAGS="$ARCH $OPTIMIZE $DEBUG -Mbackslash -Mstandard -Kieee -acc -Minfo=accel"
+FFLAGS="$ARCH $OPTIMIZE $DEBUG -I$NETCDF/include -Mbackslash -Mstandard -Kieee -acc -Minfo=accel"
 
 # Preprocessing Directives:
 #   -DNETCDF enables netCDF output

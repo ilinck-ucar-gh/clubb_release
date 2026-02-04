@@ -14,6 +14,17 @@
 # but many LAPACK/BLAS libraries are.
 #
 # export OMP_NUM_THREADS=2
+# --- Runtime environment for shared libraries ---
+if command -v module >/dev/null 2>&1; then
+  module purge
+  module load nvhpc netcdf
+fi
+
+# Fallback if module doesn't set it (safe even if NETCDF is empty)
+if [ -n "$NETCDF" ] && [ -d "$NETCDF/lib" ]; then
+  export LD_LIBRARY_PATH="$NETCDF/lib:${LD_LIBRARY_PATH:-}"
+fi
+# ----------------------------------------------
 
 # Fields for parameters passed in
 NIGHTLY=false
