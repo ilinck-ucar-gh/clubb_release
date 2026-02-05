@@ -14,8 +14,7 @@
 #PBS -o CLUBB_results_%j.log
 #PBS -l walltime=01:00:00
 #PBS -l select=1:ncpus=4:ngpus=1:gpu_type=v100
-
-LOG=CLUBB_results_${PBS_JOBID}.log
+LOG=/glade/u/home/ilinck/clubb_release/output/CLUBB_results_${PBS_JOBID}.log
 exec > "$LOG" 2>&1
 
 ### Set OpenMP threads
